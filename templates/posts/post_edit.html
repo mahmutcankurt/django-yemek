@@ -1,7 +1,7 @@
-{% extends 'posts/base.html' %}
+{% extends 'posts/../base.html' %}
 
 {% block content %}
-    <h1>Yeni post</h1>
+    <h1>Post Update</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Kaydet</button>
