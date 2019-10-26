@@ -1,12 +1,13 @@
-{% extends 'posts/../base.html' %}
+{% extends 'base.html' %}
+{% block section %}
+    <div class="m-lg-5 align-content-lg-center">
 
-{% block content %}
-    <div class="post">
-
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <h1>{{ post.title }}</h1>
+        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
+            <span class="icon-pencil-square-o"></span>
+        </a>
         {% if post.published_date %}
-            <div class="date">
+            <div>
                 {{ post.published_date }}
             </div>
         {% endif %}

@@ -1,15 +1,17 @@
-{% extends 'posts/../base.html' %}
-
-{% block content %}
+{% extends 'base.html' %}
+{% block section %}
+<div class="parallax"></div>
     {% for post in posts %}
-        <div class="post">
-
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <div class="date">
+        <div class="m-lg-5 align-content-lg-center">
+            <h1><a href="{% url 'post_detail' pk=post.pk %}" style="color: #CC3434;">{{ post.title }}</a></h1>
+            <div>
                 {{ post.published_date }}
             </div>
+            <hr>
+
             <p>{{ post.text|linebreaksbr }}</p>
-        <hr>
+            <hr>
+            <hr>
         </div>
     {% endfor %}
 {% endblock %}

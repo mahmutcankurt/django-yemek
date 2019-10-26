@@ -1,9 +1,8 @@
-{% extends 'posts/../base.html' %}
-
-{% block content %}
+{% extends 'base.html' %}
+{% block section %}
     <h1>Post Update</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
+    <form method="POST" class="m-auto">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Kaydet</button>
+        <button type="submit" class="btn-outline-danger">Kaydet</button>
     </form>
 {% endblock %}
