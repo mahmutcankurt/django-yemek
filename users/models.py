@@ -6,6 +6,7 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    location = models.CharField(max_length=30, blank=True)
     user_img = models.FileField(upload_to="images/", default="static/profile_img.jpg")
     birthdate = models.DateField(null=True, blank=True)
 
