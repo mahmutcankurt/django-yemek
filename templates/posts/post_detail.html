@@ -11,6 +11,6 @@
                 {{ post.published_date }}
             </div>
         {% endif %}
-        <p>{{ post.text|linebreaksbr }}</p>
+        <p>{{ post.text|safe|linebreaks }}</p>
     </div>
 {% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block section %}
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-8 px-md-5 py-5">
+                <div class="pt-md-4">
+                    <h1 class="mb-3">{{ post.title }}</h1>
+                    <h3>Tarif Oluştur</h3><br>
+                    {% if forms.errors %}
+                        {{ form.errors }}
+                    {% endif %}
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        {{ form.as_p }}
+                        <button class="btn py-3 px-4 btn-primary">SHARE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

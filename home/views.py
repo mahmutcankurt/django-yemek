@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse, reverse
 from .models import Post
 from django.utils import timezone
 from .forms import PostForm
@@ -28,6 +29,23 @@ def post_new(request):
     return render(request, 'posts/post_edit.html', {'form': form})
 
 
+def post_create(request, pk):
+    form = PostForm(request.POST or None, request.FILES or None)
+
+    if request.method == "POST":
+        form = PostForm()
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+
+            return HttpResponseRedirect("/post/detail/" + post.slug)
+
+    return render(request, "posts/post_create.html", {"form": form})
+
+
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -40,4 +58,5 @@ def post_edit(request, pk):
             return redirect('posts/post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
+
     return render(request, 'posts/post_edit.html', {'form': form})

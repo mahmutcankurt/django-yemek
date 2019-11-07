@@ -1,6 +1,8 @@
+{% load static %}
+
 <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #CC3434; font-family: 'Ubuntu', cursive; margin-bottom: 50px">
     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-12 float-left">
-        <a class="navbar-brand" href="#" style="color: white; font-family: 'Ubuntu', cursive">YEMEK FALAN</a>
+        <a class="navbar-brand" href="{% url 'post_list' %}" style="color: white; font-family: 'Ubuntu', cursive">YEMEK FALAN</a>
     </div>
     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-12 float-right">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -16,6 +18,11 @@
                     style="font-family: 'Ubuntu', cursive; color: #CC3434;border-color: #EBEB00;">
                 Yemeğimi Bul
             </button>
+
         </form>
+
+                    <a href="{% url 'post_create' %}" class="float-right col-xl-6 col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                        <img src="{% static 'images/add-png-image-66868.png' %}" alt="" style="width: 40px;height: 40px; margin-right: 50px;"></a>
+
     </div>
 </nav>

@@ -40,7 +40,12 @@ INSTALLED_APPS = [
 
     #our apps
 
-    'home'
+    'home',
+    'users',
+    
+    #third party apps
+    
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -108,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'tr'
 
 TIME_ZONE = 'Europe/Istanbul'
 
@@ -127,3 +132,56 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+CKEDITOR_UPLOAD_PATH = "image_upload/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_ALLOW_NONIMAGE_FILES = False
+CKEDITOR_RESTRICT_BY_USER = True
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'CMS',
+        'toolbar_CMS': [
+            {
+                'name': 'basicstyles',
+                'groups': ['basicstyles', 'cleanup'],
+                'items': ['Bold', 'Italic', 'Underline', '-', 'RemoveFormat']
+            },
+            {
+                'name': 'paragraph',
+                'groups': ['list', 'indent', 'blocks'],
+                'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
+            },
+            {
+                'name': 'links',
+                'items': ['Link', 'Unlink']
+            },
+            {
+                'name': 'insert',
+                'items': ['Image', 'HorizontalRule', 'Table', 'Iframe', ]
+            },
+            {
+                'name': 'colors',
+                'items': ['TextColor', 'BGColor']
+            },
+
+
+            {
+                'name': 'videoembed',
+                'items': ['videoembed', ]
+
+            }
+        ],
+
+        'allowedContent': True,
+        'uiColor': '#f0f0f0',
+        'extraPlugins': 'link,iframe,colorbutton,autogrow',
+        'removePlugins': 'resize',
+        'removeButtons': None,
+    },
+}
